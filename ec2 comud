@@ -1,0 +1,30 @@
+1  lsblk
+    2  sudo file -s /dev/xvdf
+    3  sudo mkfs -t ext4 /dev/xvdf
+    4  sudo file -s /dev/xvdf
+    5  sudo mkdir /mnt/2nd-vol/
+    6  cd /mnt/2nd-vol/
+    7  ls
+    8  cd
+    9  sudo mount /dev/xvdf /mnt/2nd-vol/
+   10  lsblk
+   11  df
+   12  df -h
+   13  cd /mnt/2nd-vol
+   14  ls
+   15  sudo touch guilewashere.txt
+   16  ls
+   17  lsblk
+   18  df -h
+   19  sudo resize2fs /dev/xvdf
+   20  df -h
+   21  cd /mnt/2nd-vol/
+   22  ls
+   23  sudo reboot now
+   24  lsblk
+   25  df -h
+   26  sudo file -s /dev/xvdf
+   27  sudo mount /dev/xvdf /mnt/2nd-vol/
+   28  lsblk
+   29  df -h
+   30  history
