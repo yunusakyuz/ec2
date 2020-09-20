@@ -1,0 +1,18 @@
+Arkadaşlar merhaba.
+Ec2 instance’lara bağlanma problemlerinin başında “.pem” anahtar dosyası ile ilgili hususlar yatmaktadır. Ssh ile bağlanmadan önce aşağıdaki hususlara dikkat etmek gerekmektedir.
+1. “.pem” dosyanızın hangi klasörde olduğuna bakın. Bulunduğu yolu öğrenin.
+2. Bağlantı yapacağınız terminalde (powershell, cmd, git bash, wsl ya da başka bir terminal olabilir) “.pem” dosyasının bulunduğu klasöre gelin (veya madde 3’e bakın).
+3. Bu işlemleri mutlak ya da relatif yol kullanarak da yapabilirsiniz. Yani bulunduğunuz klasörden “.pem” dosyasının bulunduğu klasörün mutlak ya da nisbi yolunu vererek de yapabilirsiniz.
+4. Dosyanın izinlerini/yetkilerini kontrol edin.
+5. Eğer “.pem” dosyasının bulunduğu klasörde iseniz:
+	ssh -i “<dosyaismi.pem>” ec2-user@<ipadresi veya domainadresi>
+6. Eğer farklı bir klasörde iseniz:
+	ssh -i “<mutlak ya da nisbi yol/dosyaismi.pem>” ec2-user@<ipadresi veya domainadresi>
+komutlarının birisiyle bağlanmayı deneyin.
+.pem dosyası ile ilgili iki problem yaşanıyor genelde. 
+İlki, dosyanın izinleri/yetkileri. Arkadaşlar bu izinleri windows terminalinden chmod ile değiştirmeye çalışıyorlar. Chmod komutu bir unix komutudur ve windows’ta çalışmaz. Izinleri windowsta değiştirmek için sağ klik özellikler/güvenlik adımlarını kullanmalısınız. Burada uygun yetkileri verdikten sonra deneyebilirsiniz. 
+Ikinci problem ise: arkadaşlar git bash’te çalışıyor, wsl’de çalışmıyor, powershell’de çalışıyor başka yerde çalışmıyor gibi girdiler yapıyor. Bunun en muhtemel sebebi dosyanın hangi kullanıcıya ait olduğunun bilinmemesidir. Başka kullanıcıya ait dosyalar üzerinde işlem yapmaya çalışıldığında hatalar alınıyor. 
+Bunun çözümüne yönelik olarak, önce bulunduğunuz terminalden kim olduğunuzu öğrenin (kullanıcı adınız) bunun için whoami komutunu kullanabilirsiniz pek çok terminalde.
+Eğer kullanıcı adınız ve dosyanın aidiyeti farklı ise yine hata alırsınız. Bunun sebebi dosyanın o anki kullanıcıya ait olması ya da olmamasıdır. Sanırım wsl’de en sık yaşanan problem bu. Zira biz wsl’de ilk defa kullanıcı tanımlarken farklı bir isim kullanıyoruz ve çalışırken windowstaki kullanıcı adından farklı bir isimle işlem yapmaya çalışıyoruz.
+Bu ikinci problemin çözümünü bugünkü derste göreceğiz. Ancak ders öncesi periyotta da kısaca anlatmayı planlıyorum. Ama önden bakmak isteyen arkadaşlar için şunu söyleyebilirim, windowstaki kullanıcı adınız ile wsl’de aynı isimde bir kullanıcı oluşturmak ve işlemlere buradan devam etmektir.
+Dersten önce görüşmek üzere...
